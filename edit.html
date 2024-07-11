@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier l'enregistrement</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='logo1.png') }}" alt="Groupe ADP" class="logo mb-4">
+        </div>
+        <h1 class="text-center">Modifier l'enregistrement</h1>
+
+        <!-- Messages Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="alert-container">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+            <script>
+                // Forcer l'affichage des messages flash
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const flashMessages = document.querySelector('.alert-container');
+                    if (flashMessages) {
+                        flashMessages.style.display = 'block';
+                        setTimeout(() => {
+                            flashMessages.style.display = 'none';
+                        }, 10000);  // Masquer après 10 secondes
+                    }
+                });
+            </script>
+          {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('edit', plan_charge_id=entry.PlanChargeID) }}" method="post">
+            <div class="form-group">
+                <label for="client">Client:</label>
+                <select name="ClientID" id="client" class="form-control">
+                    {% for client in clients %}
+                    <option value="{{ client.ClientID }}" {% if entry.ClientID == client.ClientID %}selected{% endif %}>{{ client.ClientName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="statut">Statut:</label>
+                <select name="Statut" id="statut" class="form-control">
+                    <option value="">--Choisir un statut--</option>
+                    {% for statut in statuts %}
+                    <option value="{{ statut }}" {% if entry.Statut == statut %}selected{% endif %}>{{ statut }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="numero_affaire">Numéro d'Affaire:</label>
+                <input type="text" name="NumeroAffaire" id="numero_affaire" class="form-control" value="{{ entry.NumeroAffaire }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="intitule">Intitulé:</label>
+                <input type="text" name="Intitule" id="intitule" class="form-control" value="{{ entry.Intitule }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="agent">Agent:</label>
+                <select name="AgentID" id="agent" class="form-control" required>
+                    {% for agent in agents %}
+                    <option value="{{ agent.AgentID }}" {% if entry.AgentID == agent.AgentID %}selected{% endif %}>{{ agent.AgentName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="montant">Montant:</label>
+                <input type="text" name="Montant" id="montant" class="form-control" value="{{ entry.Montant }}">
+            </div>
+
+            <div class="form-group">
+                <label for="entite">Entité:</label>
+                <select name="Entite" id="entite" class="form-control" required>
+                    {% for entite in entites %}
+                    <option value="{{ entite }}" {% if entry.Entite == entite %}selected{% endif %}>{{ entite }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="Date" id="date" class="form-control" value="{{ entry.Date }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="pourcentage_charge">Pourcentage de Charge:</label>
+                <input type="number" name="PourcentageCharge" id="pourcentage_charge" class="form-control" value="{{ entry.PourcentageCharge }}" min="0" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="etape">Étape:</label>
+                <select name="Etape" id="etape" class="form-control" required>
+                    {% for etape in etapes %}
+                    <option value="{{ etape }}" {% if entry.Etape == etape %}selected{% endif %}>{{ etape }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="form-group text-center">
+                <input type="submit" value="Enregistrer" class="btn btn-primary-adp">
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('records') }}" class="btn btn-secondary-adp">Annuler</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #031f73; /* Utiliser la couleur du formulaire */
+    margin-bottom: 20px;
+}
+
+/* Appliquer table-layout: fixed pour s'assurer que les colonnes ne changent pas de taille */
+table.dataTable {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    font-size: 16px;
+    table-layout: fixed; /* Assurer que les colonnes ne changent pas de taille */
+}
+
+table.dataTable thead th,
+table.dataTable tbody td {
+    border: 1px solid #dee2e6;
+    padding: 15px 10px; /* Augmenter la taille des lignes */
+    overflow: hidden; /* Assurer que le contenu débordant est caché */
+    text-overflow: ellipsis; /* Ajouter des points de suspension pour le contenu débordant */
+    white-space: nowrap; /* Empêcher le texte de s'étendre sur plusieurs lignes */
+}
+
+table.dataTable thead th {
+    background-color: #6c757d; 
+    color: #ffffff;
+}
+
+table.dataTable tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Styles pour les filtres */
+table.dataTable thead input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin-top: 5px;
+    color: #495057;
+    background-color: #f8f9fa;
+}
+
+/* Autres styles */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: transparent;
+    color: #031f73; /* Utiliser la couleur principale du formulaire */
+    border: none;
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: transparent;
+    color: #376DB3; /* Utiliser la couleur hover du formulaire */
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: transparent;
+    color: #000000;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    background-color: transparent;
+    color: #d6d8db;
+    cursor: not-allowed;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    color: #495057;
+    background-color: #f8f9fa;
+}
+
+.dataTables_filter input {
+    margin-top: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 5px;
+    color: #495057;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    outline: none;
+    border-color: #6c757d;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    display: none;
+}
+
+/* Styles pour les messages flash */
+.alert-container {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+a[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+a[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1000;
+}
+
+a[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+.btn-modif-supp {
+    color: #031f73;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-modif-supp:hover {
+    color: #376DB3;
+    transform: scale(1.05);
+}
+
+.btn-primary-adp {
+    background-color: #031f73;
+    border-color: #031f73;
+    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    margin: 5px; /* Ajout de marge pour espacer les boutons */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+.btn-primary-adp:hover {
+    background-color: #376DB3;
+    border-color: #376DB3;
+    color: white;
+    transform: scale(1.05); /* Agrandissement de 5% */
+}
+
+.btn-secondary-adp {
+    background-color: #e73f0d;
+    border-color: #e73f0d;
+    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px; /* Marge pour l'espacement */
+    padding: 10px 20px; /* Ajout de padding pour améliorer l'apparence */
+    text-decoration: none; /* Suppression du soulignement */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+.btn-secondary-adp:hover {
+    background-color: #031f73;
+    border-color: #031f73;
+    color: white;
+    transform: scale(1.05); /* Agrandissement de 5% */
+}
+
+.loader {
+    border: 8px solid #3498db;
+    border-top: 8px solid #ecf0f1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+/* Force the DataTables buttons to inherit the custom styles */
+.dataTables_wrapper .dataTables_button,
+.dt-buttons .dt-button {
+    background-color: #031f73 !important;
+    border-color: #031f73 !important;
+    color: white !important;
+    margin: 5px !important;
+    border-radius: 4px !important; /* Coins arrondis */
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.dataTables_wrapper .dataTables_button:hover,
+.dt-buttons .dt-button:hover {
+    background-color: #376DB3 !important;
+    border-color: #376DB3 !important;
+    transform: scale(1.05) !important;
+}
+
+.dataTables_wrapper .dt-button.btn-print {
+    background-color: #6c757d84 !important; /* Gris */
+    border-color: #6c757d !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .dt-button.btn-print:hover {
+    background-color: #5a6268 !important; /* Gris plus foncé */
+    border-color: #5a6268 !important;
+    transform: scale(1.05) !important;
+}
+
+/* Assurer que le contenu des cellules ne dépasse pas */
+table.dataTable tbody td {
+    height: 35px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+table.dataTable thead th {
+    height: 30px; /* Ajuster la hauteur des filtres */
+}
+
+/* Ajuster la hauteur des lignes pour les filtres */
+table.dataTable thead th input {
+    height: 20px; /* Ajuster la hauteur des filtres */
+}
+
+
+/* Permettre le wrapping du texte dans les en-têtes des colonnes */
+table.dataTable th {
+    white-space: normal; /* Permettre le wrapping du texte */
+    height: auto; /* Permettre à la hauteur de s'ajuster automatiquement */
+    padding: 10px; /* Ajouter du padding pour améliorer l'apparence */
+}
+
+/* Assurer que les colonnes ont une taille fixe */
+table.dataTable th,
+table.dataTable td {
+    width: 60px; /* Définir une largeur fixe pour les colonnes */
+}
+
+table.dataTable th:nth-child(4),
+table.dataTable td:nth-child(4) {
+    width: 250px; /* Définir une largeur plus large pour la colonne "Intitulé" */
+}
+
+table.dataTable th:nth-child(5),
+table.dataTable td:nth-child(5) {
+    width: 100px; /* Définir une largeur plus large pour la colonne "Agent" */
+}
+
+table.dataTable th:nth-child(8),
+table.dataTable td:nth-child(8){
+    width: 70px; 
+}
+
+table.dataTable th:nth-child(10),
+table.dataTable td:nth-child(10){
+    width: 75px;
+}
